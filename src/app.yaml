@@ -1,8 +1,26 @@
 application: leesah-piki
-version: 1
+version: development
 runtime: python
 api_version: 1
 
 handlers:
+- url: /know
+  script: know.py
+  login: required
+
+- url: /_ah/login_required
+  script: login.py
+
+- url: /welcome
+  script: welcome.py
+
+- url: /predict
+  script: predict.py
+  
+- url: /test
+  script: test
+  
 - url: /.*
-  script: helloworld.py
+  script: main.py
+  
+  
