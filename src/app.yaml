@@ -8,7 +8,7 @@ handlers:
   script: know.py
   login: required
 
-- url: /_ah/login_required
+- url: /_ah/login_required__
   script: login.py
 
 - url: /welcome

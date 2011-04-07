@@ -5,8 +5,8 @@ Created on Apr 3, 2011
 '''
 from google.appengine.ext.db import Model, UserProperty, DateTimeProperty, IntegerProperty, GeoPtProperty, StringProperty
 
-class User(Model):
-    user = UserProperty(auto_current_user=True)
+class Knower(Model):
+    account = UserProperty(auto_current_user=True)
     time = DateTimeProperty(auto_now=True)
     location = GeoPtProperty()
     credits = IntegerProperty(0)
@@ -14,7 +14,7 @@ class User(Model):
     pains = IntegerProperty(0)
 
 class Knowledge(Model):
-    user = UserProperty(auto_current_user=True)
+    account = UserProperty(auto_current_user=True)
     time = DateTimeProperty(auto_now=True)
     location = GeoPtProperty()
     info = StringProperty()

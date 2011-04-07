@@ -1,7 +1,7 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import users
-from models import Knowledge, User
+from models import Knowledge, Knower
     
 class MainPage(webapp.RequestHandler):
     
@@ -11,14 +11,14 @@ class MainPage(webapp.RequestHandler):
         p['u'] = users.get_current_user().email()
         Knowledge(info=p['i'], location='%(a)s,%(o)s' % p).put()
         
-        user = User.all().filter('user = ', p['u']).fetch(1)[0]
-        user.location = '%(a)s,%(o)s' % p
-        user.credits += 1
+        knower = Knower.all().filter('account = ', p['u']).fetch(1)[0]
+        knower.location = '%(a)s,%(o)s' % p
+        knower.credits += 1
         if p['i'] == 'p':
-            user.pains += 1
+            knower.pains += 1
         else:
-            user.fines += 1
-        user.put()
+            knower.fines += 1
+        knower.put()
         
         self.response.out.write('%(u)s reports %(i)s from %(a)s,%(o)s.' % p)
 

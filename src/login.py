@@ -6,7 +6,9 @@ class MainPage(webapp.RequestHandler):
     
     
     def get(self):
-        self.redirect(users.create_login_url(dest_url='/welcome', federated_identity='gmail.com'))
+        p = self.request.params
+        self.response.out.write(p)
+        #self.redirect(users.create_login_url(dest_url='/welcome', federated_identity='gmail.com'))
 
 
 application = webapp.WSGIApplication([('/_ah/login_required', MainPage)], debug=True)
