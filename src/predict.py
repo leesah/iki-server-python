@@ -23,14 +23,14 @@ class MainPage(webapp.RequestHandler):
         # All pains
         pains = knowledges.filter('info = ', 'p').fetch(1024)
         painCredits = dict()
-        for k in pains: painCredits[k.account] = Knower.all().filter('account = ', k.user).fetch(1)[0].credits
+        for k in pains: painCredits[k.account] = Knower.all().filter('account = ', k.account).fetch(1)[0].credits
         wet = 0
         for c in painCredits.values(): wet += c
         
         # All fines
         fines = knowledges.filter('info = ', 'f').fetch(1024)
         fineCredits = dict()
-        for k in fines: fineCredits[k.account] = Knower.all().filter('account = ', k.user).fetch(1)[0].credits
+        for k in fines: fineCredits[k.account] = Knower.all().filter('account = ', k.account).fetch(1)[0].credits
         dry = 0
         for c in fineCredits.values(): dry += c
         
