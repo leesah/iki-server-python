@@ -8,18 +8,12 @@ handlers:
   script: know.py
   login: required
 
-- url: /_ah/login_required
-  script: login.py
-
-- url: /welcome
-  script: welcome.py
-
 - url: /predict
   script: predict.py
   
-- url: /test
-  script: test
-  
+- url: /_ah/login_required
+  script: main.py
+
 - url: /.*
   script: main.py
   

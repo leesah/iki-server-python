@@ -8,7 +8,7 @@ class MainPage(webapp.RequestHandler):
     
     def get(self):
         p = self.request.params.mixed()
-        p['u'] = users.get_current_user().email()
+        p['u'] = users.get_current_user()
         Knowledge(info=p['i'], location='%(a)s,%(o)s' % p).put()
         
         knower = Knower.all().filter('account = ', p['u']).fetch(1)[0]

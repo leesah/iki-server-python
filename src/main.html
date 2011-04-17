@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8 />
+<link rel="stylesheet" href="/android.css" type="text/css" /> 
+</head>
+<body>
+<script>
+function success(position) {
+	document.write("<ul class='buttons'>")
+	
+	document.write("<li class='button_pain'>")
+	document.write("<a href='/know?i=p&a=" + position.coords.latitude + "&o=" + position.coords.longitude + "'>pain</a>")
+	document.write("</li>")
+	
+	document.write("<li class='button_fine'>")
+	document.write("<a href='/know?i=f&a=" + position.coords.latitude + "&o=" + position.coords.longitude + "'>fine</a>")
+	document.write("</li>")
+	
+	document.write("</ul>")
+}
+
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(success);
+} else {
+  error('not supported');
+}
+
+</script>
+</body>
+</html>
